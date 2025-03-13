@@ -1,6 +1,7 @@
 import looker_sdk
 import yaml
 import json
+from slugify import slugify
 from bigquery_sql_parser.query import Query as ParseBigQuery
 from argparse import ArgumentParser, ArgumentDefaultsHelpFormatter
 
@@ -80,18 +81,18 @@ class LookerObject:
 
         if len(depends_on) < 1:
             self.exposure = {
-                'name': self.id,
+                'name': slugify(self.title, separator="_"),
                 'label': self.title,
                 'type': 'dashboard',
-                'url': self.url,
+                'url': "https://numan.cloud.looker.com" + self.url,
                 'owner': {'name': self.creator},
             }
         else:
             self.exposure = {
-                'name': self.id,
+                'name': slugify(self.title, separator="_"),
                 'label': self.title,
                 'type': 'dashboard',
-                'url': self.url,
+                'url': "https://numan.cloud.looker.com" + self.url,
                 'owner': {'name': self.creator},
                 'depends_on': depends_on
         }

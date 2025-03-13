@@ -1,3 +1,4 @@
 looker-sdk>=23.18.0
 bigquery-sql-parser>=0.1.4
 pyyaml>=6.0.1
+python-slugify>=8.0.4
